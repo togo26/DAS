@@ -10,7 +10,7 @@ https://www.builder.io/blog/maps
 - Map Use case: metadata - 가져온 DB data object를 오염시키지 않고 temp로 data binding 가능
 - Map의 사촌인 Set도 Array에 비해 성능 우수. Unique 값을 가짐 -> Memory leak? -> `WeakSet` (!Use case 찾아보기)
 - iteration도 훨씬 깔끔. literal obj는 built-in method를 수반하기 때문에 key validation에 hasOwnProperty를 동반해야함. Map은 그럴 필요 없이 `for...of` 하나로 간단히 처리 가능
-- Map은 key ordering 보장 (!내부적으로 LRU cache / Linked list와 연관되어있는듯? -> Least Recently Used Cache 가장 사용되지 않은 캐시를 삭제하고 새로운 캐시를 추가하는 알고리즘 기법, Double Linked list로 구현, 높은 cache hit rates -> hit rates? 얼마나 캐시를 성공적으로 회수했는가? <-> cache misses)
+- Map은 key ordering 보장 (!내부적으로 LRU cache / Linked list와 연관되어있는듯? -> [Least Recently Used Cache 가장 사용되지 않은 캐시를 삭제하고 새로운 캐시를 추가하는 알고리즘 기법](https://www.interviewcake.com/concept/java/lru-cache), Double Linked list로 구현, 높은 cache hit rates -> hit rates? 얼마나 캐시를 성공적으로 회수했는가? <-> cache misses)
 - `[[firstKey, firstValue], [secondKey, secondValue]] = map` 순서보장 및 destructuring 가능
 - Map to Obj / Obj to Map -> `Object.fromEntries(map)` / `new Map(Object.entries(obj))`
 - Obj, Array는 build JSON method로 (de)serialization이 용이 -> 하지만, Map, Set도 JSON method의 두번째 인자(replacer, reviver)를 통해 변환 가능하다 (@추가 구현이 필요하나 성능 우위가 되어야하는 상황에서는 괜찮은 trade-off로 생각)
